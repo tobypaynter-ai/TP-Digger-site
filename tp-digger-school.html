@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TP Digger School – CPCS Registered Excavator &amp; Dumper Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange:    #E85D04;
+    --orange-lt: #F48C06;
+    --orange-dk: #9D0208;
+    --bg:        #0A0A0A;
+    --bg2:       #111111;
+    --bg3:       #1A1A1A;
+    --text:      #F0EAE0;
+    --muted:     #888880;
+    --border:    rgba(232,93,4,0.25);
+    --ff-head:   'Bebas Neue', sans-serif;
+    --ff-cond:   'Barlow Condensed', sans-serif;
+    --ff-body:   'Barlow', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--ff-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--ff-head);
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--orange);
+  }
+  .nav-logo span { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--ff-cond);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    font-family: var(--ff-cond);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    background: var(--orange);
+    color: #fff;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-lt); }
+  .nav-phone {
+    font-family: var(--ff-cond);
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .nav-phone:hover { color: var(--text); }
+  .nav-phone svg { flex-shrink: 0; }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
+  }
+  .btn-whatsapp:hover { background: #1ebe5a; transform: translateY(-1px); }
+  .btn-whatsapp svg { flex-shrink: 0; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 64px 5vw 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,1) 100%),
+      url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(232,93,4,0.08) 100%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; max-width: 860px; }
+  .hero-eyebrow {
+    font-family: var(--ff-cond);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 2px;
+    background: var(--orange);
+  }
+  h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { color: var(--orange); font-style: normal; }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.65;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    background: var(--orange);
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--orange-lt); transform: translateY(-1px); }
+  .btn-outline {
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 13px 32px;
+    background: transparent;
+    color: var(--text);
+    border-radius: 2px;
+    border: 1px solid rgba(240,234,224,0.3);
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.1s;
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-1px); }
+  .hero-stats {
+    position: relative;
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--ff-head);
+    font-size: 2.4rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--ff-cond);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 5vw; }
+  .section-label {
+    font-family: var(--ff-cond);
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--orange); }
+  h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+  h2 em { color: var(--orange); font-style: normal; }
+  .section-intro { max-width: 560px; color: var(--muted); font-size: 1.05rem; margin-bottom: 3.5rem; }
+
+  /* ── ABOUT STRIP ── */
+  #about {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 5vw;
+  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-img-wrap { position: relative; }
+  .about-img-wrap img {
+    width: 100%; height: 360px; object-fit: cover;
+    border-radius: 2px;
+    filter: brightness(0.85) saturate(0.9);
+  }
+  .about-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--ff-head);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    padding: 1.2rem 1.5rem;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .about-text h2 { margin-bottom: 1rem; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .about-text p strong { color: var(--text); }
+  .about-list { list-style: none; margin: 1.5rem 0 2rem; }
+  .about-list li {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.95rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .about-list li::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .about-list li strong { color: var(--text); }
+
+  /* ── SERVICES ── */
+  #services { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5px; background: var(--border); border: 1px solid var(--border); }
+  .service-card {
+    background: var(--bg2);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--orange);
+    transition: width 0.3s;
+  }
+  .service-card:hover { background: var(--bg3); }
+  .service-card:hover::before { width: 100%; }
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .service-card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    margin: -2.5rem -2rem 1.5rem;
+    width: calc(100% + 4rem);
+    filter: brightness(0.75) saturate(0.8);
+    transition: filter 0.3s;
+  }
+  .service-card:hover .service-card-img { filter: brightness(0.9) saturate(1); }
+  .service-card h3 {
+    font-family: var(--ff-cond);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .service-card p { color: var(--muted); font-size: 0.93rem; }
+
+  /* ── GALLERY ── */
+  #portfolio { background: var(--bg2); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 6px;
+  }
+  .gallery-item { overflow: hidden; cursor: pointer; position: relative; }
+  .gallery-item img {
+    width: 100%; height: 260px; object-fit: cover;
+    filter: brightness(0.75) saturate(0.8);
+    transition: filter 0.4s, transform 0.5s;
+  }
+  .gallery-item:hover img { filter: brightness(1) saturate(1); transform: scale(1.04); }
+  .gallery-item.large { grid-column: span 2; }
+  .gallery-item.large img { height: 360px; }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.5rem 1rem 0.8rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    font-family: var(--ff-cond);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    transform: translateY(6px);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  .gallery-item:hover .gallery-caption { opacity: 1; transform: none; }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--bg); }
+  .pricing-wrap { display: flex; justify-content: center; }
+  .pricing-card {
+    background: var(--bg2);
+    border: 1px solid var(--orange);
+    border-radius: 2px;
+    padding: 3rem 3.5rem;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card::before {
+    content: 'CPCS REGISTERED';
+    position: absolute; top: 18px; right: -30px;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--ff-cond);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 4px 40px;
+    transform: rotate(45deg);
+  }
+  .price-tag {
+    font-family: var(--ff-head);
+    font-size: 5rem;
+    color: var(--orange);
+    line-height: 1;
+    margin: 1rem 0 0.25rem;
+  }
+  .price-tag span { font-size: 2rem; vertical-align: top; margin-top: 0.8rem; display: inline-block; }
+  .price-note { font-family: var(--ff-cond); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 2rem; }
+  .price-list { list-style: none; margin-bottom: 2.5rem; }
+  .price-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.95rem;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .price-list li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+  .price-list li strong { color: var(--text); }
+  .schedule-box {
+    background: var(--bg3);
+    border-left: 3px solid var(--orange);
+    padding: 1rem 1.2rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+  .schedule-box strong { color: var(--orange); font-family: var(--ff-cond); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--bg2); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .testi-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem;
+    position: relative;
+  }
+  .testi-card::before {
+    content: '"';
+    font-family: var(--ff-head);
+    font-size: 5rem;
+    color: var(--orange);
+    opacity: 0.2;
+    position: absolute;
+    top: -0.5rem; left: 1rem;
+    line-height: 1;
+  }
+  .testi-text { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--ff-cond);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .testi-name { font-family: var(--ff-cond); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.04em; }
+  .testi-role { font-size: 0.8rem; color: var(--muted); }
+  .stars { color: var(--orange); font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+  /* ── FAQ ── */
+  #faq { background: var(--bg); }
+  .faq-list { max-width: 780px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 1.4rem 0;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--ff-cond);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { color: var(--orange); font-size: 1.2rem; flex-shrink: 0; margin-left: 1rem; transition: transform 0.3s; }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-a.open { max-height: 300px; padding-bottom: 1.2rem; }
+  .faq-a p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+  .cd-icon {
+    width: 40px; height: 40px; background: var(--bg3); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0; border-radius: 2px;
+  }
+  .cd-text strong { font-family: var(--ff-cond); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); display: block; }
+  .cd-text span { color: var(--muted); font-size: 0.93rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+  .form-field label { font-family: var(--ff-cond); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: var(--ff-body);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus { border-color: var(--orange); }
+  .form-field textarea { min-height: 120px; resize: vertical; }
+  .form-field select option { background: var(--bg3); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 3rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo { font-family: var(--ff-head); font-size: 1.4rem; color: var(--orange); }
+  .footer-logo span { color: var(--muted); font-size: 0.8rem; display: block; font-family: var(--ff-cond); letter-spacing: 0.1em; text-transform: uppercase; margin-top: -2px; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-family: var(--ff-cond); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-copy { font-size: 0.82rem; color: var(--muted); }
+  .cpcs-badge {
+    background: var(--bg3);
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    font-family: var(--ff-cond);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5vw;
+    flex-direction: column; gap: 1rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--ff-cond);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:hover { color: var(--orange); }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-badge { right: 0; bottom: -1rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.large { grid-column: span 2; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+  @media (max-width: 560px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.large { grid-column: span 1; }
+    .hero-stats { gap: 1.5rem; }
+    .pricing-card { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">TP<span> Digger School</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Training</a></li>
+    <li><a href="#portfolio">Gallery</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:07XXXXXXXXX" class="nav-phone">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    07XXXXXXXXX
+  </a>
+  <a href="tel:07XXXXXXXXX" class="nav-cta">Call Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Training</a>
+  <a href="#portfolio" onclick="closeMenu()">Gallery</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Excavator &amp; Dumper Training — CPCS Card — UK</p>
+    <h1>Stop watching.<br><em>Start operating.</em><br>Get the job.</h1>
+    <p class="hero-sub">Two weeks. 20 excavators and a full fleet of forward and rear tipping dumpers. You're in the cab from day one. Leave with a CPCS card and the skills to back it up.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book Your Place — £2,500</a>
+      <a href="https://wa.me/447XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20the%20TP%20Digger%20School%20course." class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="#about" class="btn-outline">See How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">20</div>
+        <div class="stat-label">Excavators on site</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+</div>
+        <div class="stat-label">Full dumper fleet</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Weeks to job-ready</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">CPCS</div>
+        <div class="stat-label">Card on completion</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">£0</div>
+        <div class="stat-label">Experience needed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1581094651181-35942459ef62?w=800&q=80" alt="Excavator arm and cab on training site" />
+      <div class="about-badge">CPCS<br>Registered<br>School</div>
+    </div>
+    <div class="about-text reveal">
+      <p class="section-label">Who This Is For</p>
+      <h2>You want to operate plant.<br><em>We'll get you there.</em></h2>
+      <p>Most lads who want to get into plant just can't get a look-in. No experience, no card, no chance. Sites won't touch you without the qualification. It's a catch-22 and it stops a lot of good people before they've even started.</p>
+      <p>That's why we set up TP Digger School. <strong>You're in the cab on day one.</strong> No videos. No classroom. We give you a task, you do it, you get it right, then you move on. Two weeks later you can handle an excavator and a dumper, and you've got the CPCS card to prove it.</p>
+      <ul class="about-list">
+        <li><strong>Day one, you're operating</strong> — no sitting around watching</li>
+        <li><strong>20 excavators on site</strong> — you're never stood waiting for a turn</li>
+        <li><strong>Forward &amp; rear tipping dumpers</strong> — train on both, work on any site</li>
+        <li>You nail each task <strong>before moving on</strong> — nobody gets rushed through</li>
+        <li><strong>Mon–Fri, 8am–3:30pm</strong> for two weeks — same hours as a working site</li>
+        <li>Finish with a <strong>CPCS exam</strong> — the card sites ask for before they'll hire you</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Check Course Availability →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / TRAINING -->
+<section id="services">
+  <p class="section-label reveal">What You'll Learn</p>
+  <h2 class="reveal">Ten days. <em>Real skills.</em> Job done.</h2>
+  <p class="section-intro reveal">Here's what you cover across the two weeks. Every session is hands-on. You don't move on until you've got it right — that's how we make sure you leave knowing what you're doing, not just holding a card.</p>
+  <div class="services-grid reveal">
+
+    <div class="service-card">
+      <!-- REPLACE: photo of excavator cab interior or operator doing pre-start checks -->
+      <img class="service-card-img"
+           src="images/excavator-pre-start.jpg"
+           alt="Excavator cab — pre-start checks and machine familiarisation"
+           onerror="this.style.display='none'" />
+      <h3>Getting to know the machine</h3>
+      <p>Before you dig an inch you need to know what you're sitting in. Pre-start checks, controls, how it moves, what can go wrong. We make sure you're comfortable before the real work starts.</p>
+    </div>
+
+    <div class="service-card">
+      <!-- REPLACE: photo of excavator digging or levelling ground -->
+      <img class="service-card-img"
+           src="images/excavator-digging.jpg"
+           alt="Excavator digging and levelling on training site"
+           onerror="this.style.display='none'" />
+      <h3>Basic digging — done properly</h3>
+      <p>Everyone starts here. Digging, levelling, loading. Simple tasks, but you'd be surprised how many operators cut corners. We don't let you move on until you're doing it right, every time.</p>
+    </div>
+
+    <div class="service-card">
+      <!-- REPLACE: photo of excavator cutting a trench -->
+      <img class="service-card-img"
+           src="images/excavator-trenching.jpg"
+           alt="Excavator cutting a trench on training ground"
+           onerror="this.style.display='none'" />
+      <h3>Trenching &amp; grading</h3>
+      <p>This is what foremen actually need. Accurate trenches for drainage and utilities. Clean grades. The stuff that keeps you in work once you're out there.</p>
+    </div>
+
+    <div class="service-card">
+      <!-- REPLACE: photo of site safety briefing, overhead cables or safe working zones -->
+      <img class="service-card-img"
+           src="images/site-safety.jpg"
+           alt="Site safety — working zones and hazard awareness on site"
+           onerror="this.style.display='none'" />
+      <h3>Site safety — no fluff</h3>
+      <p>What you're legally responsible for. Where the dangers actually are. Overhead cables, buried services, safe working zones. Real stuff, not just a tick-box exercise.</p>
+    </div>
+
+    <div class="service-card">
+      <!-- REPLACE: photo of excavator loading a dumper or slewing with bucket -->
+      <img class="service-card-img"
+           src="images/excavator-loading-dumper.jpg"
+           alt="Excavator loading a dumper — slewing and loading drill"
+           onerror="this.style.display='none'" />
+      <h3>Loading &amp; slewing</h3>
+      <p>Speed and accuracy working together. Loading dumpers cleanly, slewing without spilling, keeping the site moving. This is what separates a good operator from a slow one.</p>
+    </div>
+
+    <div class="service-card">
+      <!-- REPLACE: photo showing both a forward tipper and a rear tipper side by side or in use -->
+      <img class="service-card-img"
+           src="images/forward-rear-tipping-dumpers.jpg"
+           alt="Forward and rear tipping dumpers on training site"
+           onerror="this.style.display='none'" />
+      <h3>Forward &amp; rear tipping dumpers</h3>
+      <p>On top of the excavators, you'll get time on the full dumper fleet — both forward and rear tippers. Two machines on your CPCS card means more sites will want you.</p>
+    </div>
+
+    <div class="service-card">
+      <!-- REPLACE: photo of CPCS exam in progress or student in cab during assessment -->
+      <img class="service-card-img"
+           src="images/cpcs-exam.jpg"
+           alt="CPCS practical examination — student operating excavator on test day"
+           onerror="this.style.display='none'" />
+      <h3>CPCS exam — you're ready</h3>
+      <p>By the time you sit the exam, you've been doing this for two weeks on real machines. It's not a surprise. You know what's coming, you've done it already, and you walk in confident.</p>
+    </div>
+
+  </div>
+  <div style="margin-top:2.5rem;">
+    <a href="#contact" class="btn-primary">Speak to Us About the Course →</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="portfolio">
+  <p class="section-label reveal">On-Site Gallery</p>
+  <h2 class="reveal"><em>Real</em> Machines. Real Training.</h2>
+  <p class="section-intro reveal">This is what the training ground looks like. 20 excavators, a full dumper fleet, and students in the cab doing real work.</p>
+  <div class="gallery-grid reveal">
+
+    <!-- SLOT 1 (large): Excavator on site — replace with your own site photo -->
+    <div class="gallery-item large">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Excavator operating on training ground" />
+      <div class="gallery-caption">Excavator — day one on site</div>
+    </div>
+
+    <!-- SLOT 2: Excavator digging/trenching — replace with your own site photo -->
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Excavator digging a trench on site" />
+      <div class="gallery-caption">Trenching — excavator work</div>
+    </div>
+
+    <!-- SLOT 3: Forward tipping dumper — REPLACE THIS with an actual forward tipper photo from your site -->
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80"
+           alt="Forward tipping dumper on training site — replace with site photo"
+           title="REPLACE: Add a photo of your forward tipping dumper here" />
+      <div class="gallery-caption">Forward tipping dumper</div>
+    </div>
+
+    <!-- SLOT 4: Rear tipping dumper — REPLACE THIS with an actual rear tipper photo from your site -->
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=600&q=80"
+           alt="Rear tipping dumper on training site — replace with site photo"
+           title="REPLACE: Add a photo of your rear tipping dumper here" />
+      <div class="gallery-caption">Rear tipping dumper</div>
+    </div>
+
+    <!-- SLOT 5 (large): Multiple machines on site — replace with your own fleet photo -->
+    <div class="gallery-item large">
+      <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=80" alt="Excavators and plant machinery on training ground" />
+      <div class="gallery-caption">The full fleet — excavators &amp; dumpers</div>
+    </div>
+
+  </div>
+  <div style="margin-top:2.5rem;">
+    <a href="#contact" class="btn-outline">Check Availability for the Next Course →</a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <p class="section-label reveal">The Cost</p>
+  <h2 class="reveal">£2,500. <em>Here's why</em> it makes sense.</h2>
+  <p class="section-intro reveal">Most lads who try to get into plant without training spend months — sometimes years — being knocked back. No card, no chance. Two weeks here gets you further than two years of trying on your own. At £820 a week, you've covered the course fee inside a month.</p>
+  <div class="pricing-wrap reveal">
+    <div class="pricing-card">
+      <p class="section-label" style="margin-bottom: 0;">Two Weeks. One Price.</p>
+      <div class="price-tag"><span>£</span>2,500</div>
+      <p class="price-note">One price. Everything included. No extras.</p>
+      <div class="schedule-box">
+        <strong>Training hours</strong><br>
+        Monday – Friday &nbsp;|&nbsp; 8:00am – 3:30pm<br>
+        2 weeks — 10 full training days on real machines
+      </div>
+      <ul class="price-list">
+        <li><strong>20 excavators on-site</strong> — you're operating from day one, not watching</li>
+        <li><strong>Full fleet of forward &amp; rear tipping dumpers</strong> — two machines, more sites will hire you</li>
+        <li><strong>Instructors with you every day</strong> — not a video course, not self-guided</li>
+        <li><strong>CPCS theory &amp; practical exam</strong> — included, no extra charge</li>
+        <li><strong>CPCS card when you pass</strong> — the card sites ask to see before they take you on</li>
+        <li>All PPE and safety kit provided on-site</li>
+        <li><strong>No experience needed</strong> — open to ages 17+</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="width:100%;text-align:center;display:block;">Book Your Place on the Next Course →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label reveal">Student Reviews</p>
+  <h2 class="reveal">Real people. <em>Real progress.</em></h2>
+  <p class="section-intro reveal">These aren't made-up success stories. They're lads who came in with no experience, did the two weeks, and went straight into work.</p>
+  <div class="testi-grid reveal">
+
+    <div class="testi-card">
+      <!--
+        PHOTO PLACEHOLDER — Ryan L.
+        Replace the div below with your actual student photo:
+        <img src="path/to/ryan-photo.jpg" alt="Ryan L. on site"
+             style="width:100%;height:190px;object-fit:cover;border-radius:2px;
+                    margin-bottom:1.5rem;filter:brightness(0.85) saturate(0.9);">
+      -->
+      <div style="width:100%;height:190px;border-radius:2px;margin-bottom:1.5rem;
+                  overflow:hidden;border:1px solid var(--border);position:relative;">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+             alt="Excavator on site — placeholder until student photo supplied"
+             style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55) saturate(0.6);" />
+        <span style="position:absolute;bottom:8px;left:10px;font-family:var(--ff-cond);
+                     font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+                     color:rgba(255,255,255,0.45);">Replace with student photo</span>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Before I came here I was doing nights in a warehouse for £11.50 an hour. I'd wanted to get into plant for years but with no experience no one would touch me — it's a dead end until you've got the card. Did the two weeks, passed the CPCS first time, and had a job offer before I'd even got home on the last day. I'm now on <strong style="color:var(--text);">£820 a week</strong> on a groundworks contract outside Sheffield. Honestly one of the best decisions I've made.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RL</div>
+        <div>
+          <div class="testi-name">Ryan L.</div>
+          <div class="testi-role">Excavator operator, age 27 — Sheffield</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <!--
+        PHOTO PLACEHOLDER — Marcus C.
+        Replace the div below with your actual student photo:
+        <img src="path/to/marcus-photo.jpg" alt="Marcus C. on site"
+             style="width:100%;height:190px;object-fit:cover;border-radius:2px;
+                    margin-bottom:1.5rem;filter:brightness(0.85) saturate(0.9);">
+      -->
+      <div style="width:100%;height:190px;border-radius:2px;margin-bottom:1.5rem;
+                  overflow:hidden;border:1px solid var(--border);position:relative;">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80"
+             alt="Excavator on training ground — placeholder until student photo supplied"
+             style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55) saturate(0.6);" />
+        <span style="position:absolute;bottom:8px;left:10px;font-family:var(--ff-cond);
+                     font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+                     color:rgba(255,255,255,0.45);">Replace with student photo</span>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">I'll be honest — I went in sceptical. I'd done a bit of labouring over the years and thought it was going to be mostly theory and classroom stuff. It wasn't. Day one I was in the seat. They don't let you move on until you've actually got it right, which I appreciated — no cutting corners. Passed the exam, got work within a fortnight. Earning <strong style="color:var(--text);">£760 a week</strong> now, running both the excavator and the dumper on the same site. Couldn't ask for more.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MC</div>
+        <div>
+          <div class="testi-name">Marcus C.</div>
+          <div class="testi-role">Plant operator, age 34 — Birmingham</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <!--
+        PHOTO PLACEHOLDER — Terry H.
+        Replace the div below with your actual student photo:
+        <img src="path/to/terry-photo.jpg" alt="Terry H. on site"
+             style="width:100%;height:190px;object-fit:cover;border-radius:2px;
+                    margin-bottom:1.5rem;filter:brightness(0.85) saturate(0.9);">
+      -->
+      <div style="width:100%;height:190px;border-radius:2px;margin-bottom:1.5rem;
+                  overflow:hidden;border:1px solid var(--border);position:relative;">
+        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&q=80"
+             alt="Plant machinery on training site — placeholder until student photo supplied"
+             style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55) saturate(0.6);" />
+        <span style="position:absolute;bottom:8px;left:10px;font-family:var(--ff-cond);
+                     font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+                     color:rgba(255,255,255,0.45);">Replace with student photo</span>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">I was 39, fifteen years as a painter and decorator, knees starting to give me grief. My brother-in-law's been on plant for years and kept telling me to just get the card. I looked at a few places and TP had the most machines by far — twenty excavators and a full dumper fleet, so you're never stood around waiting. Wasn't going to lie, I was nervous first morning. But the instructor just got on with it, no fuss. Two weeks later I passed. Now on <strong style="color:var(--text);">£875 a week</strong>. Proper money for the first time in a long time.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TH</div>
+        <div>
+          <div class="testi-name">Terry H.</div>
+          <div class="testi-role">Excavator &amp; dumper operator, age 39 — Leeds</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-label reveal">FAQ</p>
+  <h2 class="reveal">Straight <em>answers.</em></h2>
+  <div class="faq-list reveal" id="faqList">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do I need any experience?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>No. Most people who come to us have never sat in a cab. You don't need a construction background, a licence, or any previous plant experience. We start from scratch — machine familiarisation, controls, pre-start checks — and build you up from there. If you can follow instruction and turn up ready to work, that's enough.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is CPCS included in the price?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Yes. The CPCS theory test and practical examination are both included in the £2,500 course fee — there's nothing extra to pay. CPCS (Construction Plant Competence Scheme) is the qualification UK construction sites actually ask for. Without it, most contractors won't take you on as a plant operator. Pass the exam at the end of your two weeks and the card is yours.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long does the course take?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Two weeks — Monday to Friday, 8am to 3:30pm, ten full training days. There's no stretching it out or padding. You're on machines from the first morning and the CPCS examination is at the end of week two. You need to be available for all ten days to complete the course and sit the exam.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What happens after training?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>You leave with your CPCS card and you go and find work — we don't place people into jobs. What we can tell you is that the card gets you through doors that were shut before. Most of our lads find something within a few weeks. Some have an offer lined up before they've even finished the course. Getting the card is the hard part. That's what we're here for.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Will this actually help me get work?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Honestly — yes, if you put the work in while you're here. The CPCS card is what employers want to see, and two weeks on real machines means you can actually operate, not just wave a card around. Foremen can tell within ten minutes whether someone knows what they're doing. We can't promise you a job. But we can give you the qualification and the ability to do the job properly. After that it's on you.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <p class="section-label">Get In Touch</p>
+      <h2>Want to <em>know more?</em></h2>
+      <p>Fill in the form and we'll get back to you the same day or next morning. Ask us about dates, availability, or anything else.</p>
+      <div class="contact-detail">
+        <div class="cd-icon">📞</div>
+        <div class="cd-text">
+          <strong>Phone</strong>
+          <span>07XXXXXXXXX</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+        <a href="tel:07XXXXXXXXX" class="btn-primary" style="padding:10px 22px;font-size:0.9rem;display:inline-flex;align-items:center;gap:7px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Now
+        </a>
+        <a href="https://wa.me/447XXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20the%20TP%20Digger%20School%20course." class="btn-whatsapp" style="padding:10px 22px;font-size:0.9rem;" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">⏰</div>
+        <div class="cd-text">
+          <strong>Hours on site</strong>
+          <span>Mon–Fri, 8:00am – 3:30pm</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">💷</div>
+        <div class="cd-text">
+          <strong>Cost</strong>
+          <span>£2,500 — everything included</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">🏆</div>
+        <div class="cd-text">
+          <strong>What you leave with</strong>
+          <span>CPCS card — the one sites ask for</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="fname">First name</label>
+          <input type="text" id="fname" placeholder="Jordan" />
+        </div>
+        <div class="form-field">
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="you@email.com" />
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" placeholder="07700 000000" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="age">Your age</label>
+        <select id="age">
+          <option value="">Select age range</option>
+          <option>17–20</option>
+          <option>21–25</option>
+          <option>26–30</option>
+          <option>31–35</option>
+          <option>36–40</option>
+          <option>41–45</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="experience">Previous experience</label>
+        <select id="experience">
+          <option value="">Select level</option>
+          <option>Complete beginner — no experience</option>
+          <option>Some site labouring experience</option>
+          <option>Operated machinery informally before</option>
+          <option>Looking to gain CPCS card</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">Anything else you'd like to know?</label>
+        <textarea id="message" placeholder="Dates, availability, how to pay — whatever you need to know"></textarea>
+      </div>
+      <button class="btn-primary" onclick="submitForm()" style="width:100%;">Send My Enquiry — We'll Be in Touch →</button>
+      <p id="formMsg" style="display:none;color:var(--orange);font-family:var(--ff-cond);letter-spacing:0.06em;margin-top:0.75rem;font-size:0.95rem;"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    TP Digger School
+    <span>CPCS Registered Training</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Training</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="cpcs-badge">CPCS Registered</div>
+  <p class="footer-copy">© 2026 TP Digger School. All rights reserved.</p>
+</footer>
+
+<script>
+  /* ── NAV TOGGLE ── */
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  /* ── FAQ ACCORDION ── */
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a.open').forEach(a => {
+      a.classList.remove('open');
+      a.previousElementSibling.querySelector('.faq-icon').textContent = '+';
+    });
+    if (!isOpen) {
+      answer.classList.add('open');
+      icon.textContent = '−';
+    }
+  }
+
+  /* ── FORM SUBMIT ── */
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const msg = document.getElementById('formMsg');
+    if (!fname || !email) {
+      msg.textContent = 'Please fill in your name and email to continue.';
+      msg.style.color = '#E85D04';
+      msg.style.display = 'block';
+      return;
+    }
+    msg.textContent = 'Got it, ' + fname + '. We\'ll be back to you shortly.';
+    msg.style.color = '#4ade80';
+    msg.style.display = 'block';
+  }
+
+  /* ── NAV HIGHLIGHT ON SCROLL ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--orange)' : '';
+    });
+  });
+</script>
+</body>
+</html>
